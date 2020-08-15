@@ -1,0 +1,17 @@
+[33mcommit 367f1cdefa867cbe52ef133f579d0a7010ef173c[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Thiago Martins <contato.thiagocesar@icloud.com>
+Date:   Sat Aug 15 11:32:39 2020 -0300
+
+    criação do topico controller e repository
+
+[33mcommit 777394b5a380b27ae05474f23147719079c53ddb[m
+Author: Thiago Martins <contato.thiagocesar@icloud.com>
+Date:   Fri Aug 14 18:49:43 2020 -0300
+
+    criação das classes de modelo
+
+[33mcommit 5996ffebb4b267ca9ea76d55a7237406cef9160b[m
+Author: Thiago Martins <contato.thiagocesar@icloud.com>
+Date:   Fri Aug 14 16:09:29 2020 -0300
+
+    projeto iniciado
