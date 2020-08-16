@@ -1,14 +1,15 @@
 package br.com.alura.forum.controller;
 
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,13 +40,14 @@ public class TopicoController {
 	private CursoRepository cursoRepository;
 
 	@GetMapping
-	public ResponseEntity<List<TopicoDto>> lista(@RequestParam(required = false) String nomeCurso) {
-		List<Topico> topicos = new ArrayList<>();
+	public ResponseEntity<Page<TopicoDto>> lista(@RequestParam(required = false) String nomeCurso,
+			@PageableDefault(page = 0, size = 10) Pageable paginacao) {
+		Page<Topico> topicos;
 
 		if (nomeCurso == null) {
-			topicos = topicoRepository.findAll();
+			topicos = topicoRepository.findAll(paginacao);
 		} else {
-			topicos = topicoRepository.findByCursoNome(nomeCurso);
+			topicos = topicoRepository.findByCursoNome(nomeCurso, paginacao);
 		}
 
 		return ResponseEntity.ok().body(TopicoDto.converter(topicos));
@@ -90,12 +92,12 @@ public class TopicoController {
 	@Transactional
 	public ResponseEntity<?> remover(@PathVariable Long id) {
 		Optional<Topico> topico = topicoRepository.findById(id);
-		
+
 		if (topico.isPresent()) {
 			topicoRepository.deleteById(id);
 			return ResponseEntity.ok().build();
 		}
-		
+
 		return ResponseEntity.notFound().build();
 	}
 }
