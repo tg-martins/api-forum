@@ -1,6 +1,6 @@
 # api-forum
 
-### Projeto desenvolvido nas aulas sobre criação de uma API REST utilizando Spring Boot. 
+### Projeto desenvolvido durante as aulas sobre a criação de uma API REST utilizando Spring Boot. 
 
 * Banco de dados H2.
 * Para autenticar, enviar uma requisição POST para o endpoint `/auth` com o seguinte payload:
